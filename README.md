@@ -74,37 +74,51 @@
 				var arrowShape = new THREE.Shape();
 
 					( function roundedRect( ctx ){
-//ctx.moveTo( -80, 10 );
-					//ctx.lineTo( 10, 10 );
 
-					ctx.moveTo( -80, 30 );
-					ctx.lineTo( -30, -10 );
-ctx.lineTo( 20, 70 );
-ctx.lineTo( 50, 70 );
-					ctx.lineTo( -30, -30 );
+					ctx.moveTo( -80, 10 );
+					ctx.lineTo( 10, 10 );
+					ctx.lineTo( -20, 40 );
+					ctx.lineTo( 10, 40 );
+					ctx.lineTo( 50, 0 );
+					ctx.lineTo( 10, -40 );
+					ctx.lineTo( -20, -40 );
+					ctx.lineTo( 10, -10 );
+					ctx.lineTo( -80, -10 );
 					ctx.lineTo( -80, 10 );
+
 					} )( arrowShape );
 							
 
 					var size = 10;
 					var extrudeSettings = 
 						{ 
-							depth: size, bevelSegments: 9, curveSegments: 32 
+							depth: size, bevelSegments: 18, curveSegments: 302 
 						};
 
 					var geometry = new THREE.ExtrudeGeometry( arrowShape, extrudeSettings );
 					var material = new THREE.MeshPhongMaterial({ 
-						color: 0x008000, specular: 0x708090, shininess: 20 
+						color: 0xffc0cb, specular: 0x708090, shininess: 200 
 					});
 
 					var arrow_right = new THREE.Mesh( geometry, material );
 					scene.add( arrow_right );
-//var arrow_left = new THREE.Mesh( geometry, material );	
-//arrow_left.rotation.y = Math.PI;
-//arrow_left.position.set( -200, 0,  size/2 );
-//scene.add( arrow_left );
 
-			
+var arrow_left = new THREE.Mesh( geometry, material );	
+arrow_left.rotation.y = Math.PI;
+arrow_left.position.set( -200, 0,  size/2 );
+scene.add( arrow_left );
+var arrow_left = new THREE.Mesh( geometry, material );
+arrow_left.rotation.x = Math.PI/2;	
+//arrow_left.rotation.y = Math.PI/2;
+arrow_left.rotation.z = (3*Math.PI/2);
+//arrow_left.rotation.z = Math.PI
+arrow_left.position.set( -100, 0,  size/2-110 );
+scene.add( arrow_left );
+var arrow_left = new THREE.Mesh( geometry, material );	
+arrow_left.rotation.x = Math.PI/2;
+arrow_left.rotation.z = Math.PI/2;
+arrow_left.position.set( -100, 0,  size/2+100 );
+scene.add( arrow_left );
 
 			}
 
